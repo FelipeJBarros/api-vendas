@@ -1,2 +1,2 @@
 // eslint-disable-next-line no-console
-console.log("Starting in port...");
+console.log('Starting in port...');
