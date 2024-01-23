@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
-import { ICreateProduct } from '../models/registerProductModel';
+import { ICreateProduct } from '../models/IRegisterProduct';
 import Product from '../typeorm/entities/Product';
 
 class CreateProductService {

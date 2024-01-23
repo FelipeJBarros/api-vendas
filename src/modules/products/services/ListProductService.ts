@@ -1,4 +1,4 @@
-import { IPaginatedProducts } from '../models/paginateProductModel';
+import { IPaginatedProducts } from '../models/IPaginateProduct';
 import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 
 class ListProductService {

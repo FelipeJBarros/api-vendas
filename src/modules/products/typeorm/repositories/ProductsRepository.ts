@@ -1,8 +1,8 @@
 import { dataSource } from '@shared/typeorm';
 import { Repository } from 'typeorm';
 import Product from '../entities/Product';
-import { ICreateProduct } from '@modules/products/models/registerProductModel';
-import { IPaginatedProducts } from '@modules/products/models/paginateProductModel';
+import { ICreateProduct } from '@modules/products/models/IRegisterProduct';
+import { IPaginatedProducts } from '@modules/products/models/IPaginateProduct';
 
 export class ProductRepository {
     private ormRepository: Repository<Product>;
