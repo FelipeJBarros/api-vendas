@@ -22,8 +22,12 @@ export class ProductRepository {
     }
 
     public async save(product: Product): Promise<Product> {
-        this.ormRepository.save(product);
+        await this.ormRepository.save(product);
         return product;
+    }
+
+    public async delete(product: Product): Promise<void> {
+        await this.ormRepository.remove(product);
     }
 
     public async findByName(name: string): Promise<Product | null> {
