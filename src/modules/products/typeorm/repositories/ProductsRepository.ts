@@ -11,10 +11,19 @@ export class ProductRepository {
         this.ormRepository = dataSource.getRepository(Product);
     }
 
-    public async create({ name, price, quantity }: ICreateProduct) {
+    public async create({
+        name,
+        price,
+        quantity,
+    }: ICreateProduct): Promise<Product> {
         const newProduct = this.ormRepository.create({ name, price, quantity });
         await this.ormRepository.save(newProduct);
         return newProduct;
+    }
+
+    public async save(product: Product): Promise<Product> {
+        this.ormRepository.save(product);
+        return product;
     }
 
     public async findByName(name: string): Promise<Product | null> {
