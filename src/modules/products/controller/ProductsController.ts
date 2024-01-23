@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CreateProductService from '../services/CreateProductService';
 import ListProductService from '../services/ListProductService';
+import GetProductService from '../services/GetProductService';
 
 class ProductsController {
     public async create(
@@ -17,6 +18,18 @@ class ProductsController {
         });
 
         return response.json(newProduct);
+    }
+
+    public async index(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
+        const { id } = request.params;
+        const getProductService = new GetProductService();
+
+        const product = await getProductService.execute(id);
+
+        return response.json(product);
     }
 
     public async list(request: Request, response: Response): Promise<Response> {
