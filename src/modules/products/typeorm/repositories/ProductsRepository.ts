@@ -25,6 +25,11 @@ export class ProductRepository {
         return product;
     }
 
+    public async findById(productId: string): Promise<Product | null> {
+        const product = await this.ormRepository.findOneBy({ id: productId });
+        return product;
+    }
+
     public async findAll(
         page: number,
         skip: number,
