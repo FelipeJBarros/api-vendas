@@ -27,16 +27,17 @@ export class ProductRepository {
 
     public async findAll(
         page: number,
-        limit: number,
+        skip: number,
+        take: number,
     ): Promise<IPaginatedProducts> {
         const [products, count] = await this.ormRepository
             .createQueryBuilder()
-            .skip(page * limit)
-            .take(limit)
+            .skip(skip)
+            .take(take)
             .getManyAndCount();
 
         const result = {
-            items_per_page: limit,
+            items_per_page: take,
             total: count,
             current_page: page,
             data: products,
