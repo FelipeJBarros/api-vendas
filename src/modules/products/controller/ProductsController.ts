@@ -3,6 +3,7 @@ import CreateProductService from '../services/CreateProductService';
 import ListProductService from '../services/ListProductService';
 import GetProductService from '../services/GetProductService';
 import UpdateProductService from '../services/UpdateProductService';
+import DeleteProductService from '../services/DeleteProductService';
 
 class ProductsController {
     public async create(
@@ -36,6 +37,18 @@ class ProductsController {
         });
 
         return response.json(product);
+    }
+
+    public async delete(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
+        const { id } = request.params;
+        const deleteProductService = new DeleteProductService();
+
+        await deleteProductService.execute(id);
+
+        return response.json([]);
     }
 
     public async index(
