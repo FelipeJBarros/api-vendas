@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import CreateProductService from '../services/CreateProductService';
 import ListProductService from '../services/ListProductService';
 import GetProductService from '../services/GetProductService';
+import UpdateProductService from '../services/UpdateProductService';
 
 class ProductsController {
     public async create(
@@ -18,6 +19,23 @@ class ProductsController {
         });
 
         return response.json(newProduct);
+    }
+
+    public async update(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
+        const { id } = request.params;
+        const { name, price, quantity } = request.body;
+        const updateProductService = new UpdateProductService();
+
+        const product = await updateProductService.execute(id, {
+            name,
+            price,
+            quantity,
+        });
+
+        return response.json(product);
     }
 
     public async index(
