@@ -8,7 +8,7 @@ class ListProductService {
     ): Promise<IPaginatedProducts> {
         const productsRepository = new ProductRepository();
         const take = limit;
-        const skip = (Number(page) - 1) * limit;
+        const skip = (page - 1) * limit;
         const listResult = productsRepository.findAll(page, skip, take);
         return listResult;
     }

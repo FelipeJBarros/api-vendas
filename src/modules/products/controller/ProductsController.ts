@@ -24,7 +24,7 @@ class ProductsController {
         const listProductService = new ListProductService();
 
         const listProducts = await listProductService.execute(
-            Number(page) || 0,
+            Number(page) || 1,
             Number(limit) || 10,
         );
 
