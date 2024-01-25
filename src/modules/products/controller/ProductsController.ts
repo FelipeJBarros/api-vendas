@@ -5,6 +5,8 @@ import GetProductService from '../services/GetProductService';
 import UpdateProductService from '../services/UpdateProductService';
 import DeleteProductService from '../services/DeleteProductService';
 
+const DEFAULT_NUMBER_PAGE = 1;
+const DEFAULT_PAGE_LIMIT = 10;
 class ProductsController {
     public async create(
         request: Request,
@@ -68,8 +70,8 @@ class ProductsController {
         const listProductService = new ListProductService();
 
         const listProducts = await listProductService.execute(
-            Number(page) || 1,
-            Number(limit) || 10,
+            Number(page) || DEFAULT_NUMBER_PAGE,
+            Number(limit) || DEFAULT_PAGE_LIMIT,
         );
 
         return response.json(listProducts);
