@@ -9,7 +9,7 @@ userRouter.get('/', userController.list);
 userRouter.post(
     '/',
     celebrate({
-        [Segments.BODY]: Joi.object().keys({
+        [Segments.QUERY]: Joi.object().keys({
             name: Joi.string().required(),
             email: Joi.string().email().required(),
             password: Joi.string().required(),

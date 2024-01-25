@@ -20,10 +20,10 @@ class UserController {
 
     public async list(request: Request, response: Response): Promise<Response> {
         const listUserService = new ListUserService();
-        const { page, limit } = request.params;
+        const { page, limit } = request.query;
         const userList = await listUserService.execute(
-            Number(page) | DEFAULT_NUMBER_PAGE,
-            Number(limit) | DEFAULT_PAGE_LIMIT,
+            Number(page) || DEFAULT_NUMBER_PAGE,
+            Number(limit) || DEFAULT_PAGE_LIMIT,
         );
         return response.json(userList);
     }
